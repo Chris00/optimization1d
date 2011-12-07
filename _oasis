@@ -1,0 +1,40 @@
+#								-*-conf-*-
+OASISFormat: 0.2
+Name:        archimedes
+Version:     0.2
+Synopsis:    Find extrema of 1D functions.
+Description: Collection of functions to seek the minimum and maximum
+  of functions float -> float.
+Authors:     Christophe Troestler <Christophe.Troestler@umons.ac.be>
+License:     LGPL-3.0 with OCaml linking exception
+Homepage:    http://forge.ocamlcore.org/projects/archimedes/
+Plugins:     META (0.2), StdFiles (0.2)
+
+Library "optimization1d"
+  Path: src
+  BuildTools:   ocamlbuild
+  Modules:      Min1D, Max1D
+
+
+Executable "max1D_test"
+  Path:         tests
+  BuildTools:   ocamlbuild
+  MainIs:       max1D_test.ml
+  BuildDepends: optimization1d
+  Install:      false
+
+Executable "min1D_test"
+  Path:         tests
+  BuildTools:   ocamlbuild
+  MainIs:       min1D_test.ml
+  BuildDepends: optimization1d
+  Install:      false
+
+
+Document API
+  Title:           API reference for Optimization1d
+  Type:            OCamlbuild (0.2)
+  InstallDir:      $docdir/api
+  BuildTools:      ocamldoc, ocamlbuild
+  XOCamlbuildPath: src
+  XOCamlbuildLibraries: optimization1d
