@@ -1,13 +1,13 @@
 #								-*-conf-*-
 OASISFormat: 0.2
 Name:        optimization1d
-Version:     0.2
+Version:     0.3
 Synopsis:    Find extrema of 1D functions.
 Description: Collection of functions to seek the minimum and maximum
   of functions float -> float.
 Authors:     Christophe Troestler <Christophe.Troestler@umons.ac.be>
 License:     LGPL-3.0 with OCaml linking exception
-Homepage:    http://forge.ocamlcore.org/projects/archimedes/
+Homepage:    http://forge.ocamlcore.org/projects/optimization1d/
 Plugins:     META (0.2), StdFiles (0.2)
 
 Library "optimization1d"
@@ -38,3 +38,8 @@ Document API
   BuildTools:      ocamldoc, ocamlbuild
   XOCamlbuildPath: src
   XOCamlbuildLibraries: optimization1d
+
+SourceRepository trunk
+  Type:       svn
+  Location:   https://forge.ocamlcore.org/anonscm/bzr/optimization1d/
+  Browser:    http://forge.ocamlcore.org/scm/browser.php?group_id=280
