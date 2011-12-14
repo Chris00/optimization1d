@@ -24,7 +24,7 @@ val brent : ?tol:float -> (float -> float) -> float -> float -> float * float
 
     @param tol Default: [sqrt epsilon_float].  The algorithm reduces the
     interval [[a,b]] containing an approximation [x] of the minimum
-    until |x - (a+b)/2| + |b-a|/2 ≤ 2 √ epsilon_float |x| + tol / 3.
+    until |x - (a+b)/2| + |b-a|/2 <= 2 sqrt epsilon_float |x| + tol / 3.
 
     Algorithm: G.Forsythe, M.Malcolm, C.Moler, Computer methods for
     mathematical computations. M., Mir, 1980. *)
@@ -37,5 +37,5 @@ val golden_search :
     [f(b)] is lower than [f(a)] and [f(c)].
 
     @param tol Default: [sqrt epsilon_float].  The algorithm reduces the
-    interval [[a,c]] until |a - c| ≤ tol (|a| + |c|). *)
+    interval [[a,c]] until |a - c| <= tol (|a| + |c|). *)
 ;;
