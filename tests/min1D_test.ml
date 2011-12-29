@@ -18,6 +18,10 @@ let () =
   test "(x^3 - 2*x - 5)^2" f 2. 3.;
   printf "Exact root is \t\t\t2.0945514815\n";
 
+  (* Min on boundary *)
+  test "x^2" (fun x -> x *. x) 1. 2.;
+  test "-x^2" (fun x -> -. x *. x) 1. 2.;
+
   let f3 x =
     let y = cos x -. x in y *. y -. 2.  in
   test "(cos(x)-x)^2 - 2" f3 2. 3.;
