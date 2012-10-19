@@ -19,7 +19,7 @@ setup.data: setup.ml
 	ocaml $< -configure
 
 setup.ml: _oasis
-	oasis.dev setup
+	oasis setup -setup-update dynamic
 
 doc install uninstall reinstall: all
 	ocaml setup.ml -$@
@@ -32,6 +32,8 @@ upload-doc: doc
 dist tar: $(DISTFILES)
 	mkdir $(PKGNAME)-$(PKGVERSION)
 	cp --parents -r $(DISTFILES) $(PKGNAME)-$(PKGVERSION)/
+#	Independent oasis setup.ml
+	cd $(PKGNAME)-$(PKGVERSION) && oasis setup
 	tar -zcvf $(PKG_TARBALL) $(PKGNAME)-$(PKGVERSION)
 	$(RM) -rf $(PKGNAME)-$(PKGVERSION)
 
