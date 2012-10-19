@@ -3,7 +3,7 @@
    Copyright (C) 2011
 
      Christophe Troestler <Christophe.Troestler@umons.ac.be>
-     WWW: http://math.umons.ac.be/an/software/
+     WWW: http://math.umons.ac.be/anum/software/
 
    This library is free software; you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License version 3 or
