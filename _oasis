@@ -1,7 +1,7 @@
 #								-*-conf-*-
 OASISFormat: 0.3
 Name:        optimization1d
-Version:     0.5
+Version:     0.5.1
 Synopsis:    Find extrema of 1D functions.
 Description: Collection of functions to seek the minimum and maximum
   of functions float -> float.
