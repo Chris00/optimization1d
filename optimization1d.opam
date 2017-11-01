@@ -5,7 +5,7 @@ homepage: "https://github.com/Chris00/optimization1d"
 license: "LGPL-3.0 with OCaml linking exception"
 dev-repo: "https://github.com/Chris00/optimization1d.git"
 bug-reports: "https://github.com/Chris00/optimization1d/issues"
-#doc: ""
+doc: "https://Chris00.github.io/optimization1d/doc"
 tags: ["optimization"]
 build: [
   [ "jbuilder" "subst" ] {pinned}
