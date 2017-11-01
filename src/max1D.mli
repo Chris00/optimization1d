@@ -18,7 +18,7 @@
 (** One dimensional maximization routines. *)
 
 val brent : ?tol:float -> (float -> float) -> float -> float -> float * float
-(** [brent f a b] uses Bent's method to return [(x, f x)] where [x] is
+(** [brent f a b] uses Brent's method to return [(x, f x)] where [x] is
     the best approximation to a maximum point of [f] on the interval
     [[a,b]].
 
