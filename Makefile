@@ -1,48 +1,22 @@
 WEB = shell.forge.ocamlcore.org:/home/groups/optimization1d/htdocs
 
-PKGNAME = $(shell oasis query name)
-PKGVERSION = $(shell oasis query version)
-PKG_TARBALL = $(PKGNAME)-$(PKGVERSION).tar.gz
+PKGVERSION = $(shell git describe --always)
 
-DISTFILES = AUTHORS.txt INSTALL.txt README.txt _oasis _tags myocamlbuild.ml \
-  setup.ml Makefile src/META src/API.odocl \
-  $(wildcard $(addprefix src/, *.ml *.mli *.mllib *.mlpack *.ab)) \
-  $(wildcard tests/*.ml tests/*.ab)  $(wildcard examples/*.ml)
+all byte native:
+	jbuilder build @install --dev
 
-.PHONY: all byte native configure doc install uninstall reinstall upload-doc
+tests:
+	jbuilder runtest
 
-all byte native: configure
-	ocaml setup.ml -build
+doc:
+	jbuilder build --dev @doc
+	echo '.def { background: #f0f0f0; }' >> _build/default/_doc/odoc.css
 
-configure: setup.data
-setup.data: setup.ml
-	ocaml $< -configure
-
-setup.ml: _oasis
-	oasis setup -setup-update dynamic
-
-doc install uninstall reinstall: all
-	ocaml setup.ml -$@
+clean:
+	jbuilder clean
 
 upload-doc: doc
 	scp -C -r _build/src/API.docdir/ $(WEB)/
 
-# Make a tarball
-.PHONY: dist tar
-dist tar: $(DISTFILES)
-	mkdir $(PKGNAME)-$(PKGVERSION)
-	cp --parents -r $(DISTFILES) $(PKGNAME)-$(PKGVERSION)/
-#	Independent oasis setup.ml
-	cd $(PKGNAME)-$(PKGVERSION) && oasis setup
-	tar -zcvf $(PKG_TARBALL) $(PKGNAME)-$(PKGVERSION)
-	$(RM) -rf $(PKGNAME)-$(PKGVERSION)
 
-.PHONY: clean distclean dist-clean
-clean:
-	ocaml setup.ml -clean
-	$(RM) $(PKG_TARBALL)
-	$(RM) $(wildcard *~ *.pdf *.ps *.png *.svg) setup.data
-
-distclean dist-clean::
-	ocaml setup.ml -distclean
-	$(RM) $(wildcard *.ba[0-9] *.bak *~ *.odocl)
+.PHONY: all byte native tests doc upload-doc clean
